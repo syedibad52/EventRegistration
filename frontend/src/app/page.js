@@ -97,7 +97,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="navbar" id="main-navbar">
         <Link href="/" className="navbar-logo">
-          <img src="/logo.png" alt="EventHub Logo" style={{ width: 40, height: 40, borderRadius: 8, objectFit: 'cover' }} />
+          <div className="navbar-logo-icon">E</div>
           <span className="navbar-logo-text">EventHub</span>
         </Link>
         <ul className="navbar-links">
