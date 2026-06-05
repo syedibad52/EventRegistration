@@ -126,7 +126,7 @@ export default function AdminDashboard() {
       {/* Navigation */}
       <nav className="navbar" id="admin-navbar">
         <Link href="/" className="navbar-logo">
-          <div className="navbar-logo-icon">E</div>
+          <img src="/logo.png" alt="EventHub Logo" style={{ width: 40, height: 40, borderRadius: 8, objectFit: 'cover' }} />
           <span className="navbar-logo-text">EventHub</span>
         </Link>
         <ul className="navbar-links">

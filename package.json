@@ -1,0 +1,26 @@
+{
+  "name": "eventregistration",
+  "version": "1.0.0",
+  "description": "A modern, full-stack college event registration platform. The application allows students to browse upcoming events and register, while providing an admin dashboard to track and manage all registrations.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "start": "concurrently \"npm start --prefix backend\" \"npm start --prefix frontend\"",
+    "install:all": "npm install && npm install --prefix backend && npm install --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syedibad52/EventRegistration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/syedibad52/EventRegistration/issues"
+  },
+  "homepage": "https://github.com/syedibad52/EventRegistration#readme",
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}
