@@ -70,6 +70,34 @@ From the dashboard, you can:
 - Search and filter students.
 - Delete participant registrations.
 
+## 🌐 Live Deployment
+
+This project is configured for easy live hosting using **Vercel** for the frontend and **Render** for the backend.
+
+### 1. Backend Deployment (Render)
+1. Log in to [Render](https://render.com/) and create a new **Web Service** linked to your GitHub repo.
+2. Set the following details:
+   - **Root Directory**: `backend`
+   - **Build Command**: `npm install`
+   - **Start Command**: `node server.js`
+3. Under **Environment**, add these Environment Variables:
+   - `PORT` = `5000`
+   - `NODE_ENV` = `production`
+   - `ADMIN_USERNAME` = `your-admin-username`
+   - `ADMIN_PASSWORD` = `your-admin-password`
+   - `FRONTEND_URL` = `https://your-app.vercel.app` *(update this once you deploy your frontend)*
+4. Deploy the service and copy the provided URL (e.g. `https://your-api.onrender.com`).
+
+### 2. Frontend Deployment (Vercel)
+1. Log in to [Vercel](https://vercel.com/) and import your GitHub repo.
+2. Select **Next.js** framework and configure the **Root Directory** as `frontend`.
+3. Add the following Environment Variable:
+   - `NEXT_PUBLIC_API_URL` = `https://your-api.onrender.com/api` *(use the backend URL copied from Render)*
+4. Click **Deploy**. Vercel will build the frontend and provide your live URL.
+5. **CORS Configuration**: Copy your live Vercel URL and update the `FRONTEND_URL` variable in your Render dashboard, then restart/redeploy the backend.
+
+*(Note: Because SQLite is a local file-based database, on Render's free tier the database file is ephemeral and will reset when the instance spins down or restarts. This is standard behavior for free-tier SQLite hosting and is perfect for academic demonstration.)*
+
 ## 📁 Project Structure
 
 ```text

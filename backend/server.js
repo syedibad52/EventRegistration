@@ -15,6 +15,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust first proxy for secure cookies behind reverse proxy (Render)
+app.set('trust proxy', 1);
+
 // Middleware
 const allowedOrigins = [
   process.env.FRONTEND_URL || 'http://localhost:3000',
@@ -63,7 +66,7 @@ app.post('/api/admin/login', (req, res) => {
     res.cookie('admin_session', 'authenticated', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
       maxAge: 4 * 60 * 60 * 1000, // 4 hours
       path: '/'
     });
@@ -81,7 +84,13 @@ app.get('/api/admin/verify', (req, res) => {
 });
 
 app.post('/api/admin/logout', (req, res) => {
-  res.cookie('admin_session', '', { httpOnly: true, maxAge: 0, path: '/' });
+  res.cookie('admin_session', '', { 
+    httpOnly: true, 
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    maxAge: 0, 
+    path: '/' 
+  });
   res.json({ success: true, message: 'Logged out' });
 });
 
